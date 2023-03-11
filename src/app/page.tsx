@@ -60,7 +60,7 @@ export default function Page() {
                 className="flex gap-4 h-64"
                 key={i}
               >
-                <Image
+                <img
                   className="h-64"
                   src={article.thumbnail}
                   alt={article.title}
