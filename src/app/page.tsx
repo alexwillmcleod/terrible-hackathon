@@ -76,7 +76,7 @@ export default function Page() {
 				<div className="sticky top-8 mb-auto">
 					<Image src={TerribleHack} alt="" />
 					<h3 className="text-2xl text-bold text-center">
-						Join us at Terrible Hackathon!
+						Join us at the Terrible Ideas Hackathon!
 					</h3>
 				</div>
 			</aside>
