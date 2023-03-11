@@ -26,7 +26,7 @@ export default function Page() {
       setArticles(await getData());
     };
     fetchArticles();
-  });
+  }, []);
 
   return (
     <main className="min-h-full grid">
