@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Divider from "../assets/divider.png";
 import InfoIcon from "../assets/info.png";
 import Logo from "../assets/logo.png";
 
@@ -43,8 +44,8 @@ export default function Page() {
 				<Image src={Logo} alt="" />
 				<Image className="absolute top-0 right-0" src={InfoIcon} alt="" />
 			</header>
-			<main className="grid grid-cols-[2fr_1fr] mx-auto gap-16 px-8">
-				<div className="max-w-3xl">
+			<main className="grid grid-cols-[2fr_auto_1fr] mx-auto px-8 gap-4">
+				<div className="max-w-3xl flex flex-col gap-8">
 					<h1 className="text-4xl font-bold mb-12">Recent articles</h1>
 					{articles.map((article, i) => {
 						return (
@@ -62,6 +63,7 @@ export default function Page() {
 						);
 					})}
 				</div>
+				<Image src={Divider} alt="" className="h-full" />
 				<aside className="bg-red-300">
 					<h1>Aside</h1>
 				</aside>
