@@ -1,3 +1,7 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 async function getData() {
   const res = await fetch('http://localhost:3000/api/rss');
   if (!res.ok) {
@@ -8,13 +12,21 @@ async function getData() {
   return res.json();
 }
 
-export default async function Page() {
-  const articles = (await getData()) as {
-    title: string;
-    content: string;
-    thumbnail: string;
-  }[];
-  // console.log(articles);
+export default function Page() {
+  const [articles, setArticles] = useState<
+    {
+      title: string;
+      content: string;
+      thumbnail: string;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      setArticles(await getData());
+    };
+    fetchArticles();
+  });
 
   return (
     <main className="min-h-full grid">
