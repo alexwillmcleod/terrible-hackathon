@@ -22,8 +22,8 @@ export default async function Page() {
         <a>Things News</a>
       </div>
       <div>
-        {articles.map((article) => (
-          <div>
+        {articles.map((article, index) => (
+          <div key={index}>
             <h1>{article.title}</h1>
             <img
               src={article.thumbnail}
