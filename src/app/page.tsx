@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Divider from "../assets/divider.png";
+import Scribble1 from "../assets/scribble1.png";
+import Scribble2 from "../assets/scribble2.png";
+import Scribble3 from "../assets/scribble3.png";
 
 async function getData() {
 	const res = await fetch("/api/rss");
@@ -16,6 +19,8 @@ async function getData() {
 	return res.json();
 }
 
+const scribbles = [Scribble1, Scribble2, Scribble3];
+
 export default function Page() {
 	const [articles, setArticles] = useState<Article[]>([]);
 
@@ -25,7 +30,7 @@ export default function Page() {
 			setArticles(
 				data.map((article) => ({
 					...article,
-					content: article.content.slice(0, 100) + "...",
+					content: article.content.slice(0, 250) + "...",
 				}))
 			);
 		};
@@ -33,30 +38,40 @@ export default function Page() {
 	}, []);
 
 	return (
-		<main className="grid grid-cols-[2fr_auto_1fr] mx-auto px-8 gap-4 max-w-7xl pb-36">
-			<div className="max-w-3xl flex flex-col gap-8">
-				<h1 className="text-4xl font-bold mb-12">Recent articles</h1>
+		<main className="grid lg:grid-cols-[2fr_auto_1fr] mx-auto px-8 gap-4 max-w-7xl pb-36">
+			<div className="max-w-3xl flex flex-col gap-16">
+				<h1 className="text-4xl font-bold">Recent articles</h1>
 				{articles.map((article, i) => {
+					const scribble = scribbles[i % scribbles.length];
+
 					return (
-						<article className="flex gap-4 h-64" key={i}>
-							<img
-								className="h-64"
-								src={article.thumbnail}
-								alt={article.title}
-								loading="lazy"
-							/>
-							<div className="overflow-hidden">
-								<Link href={`/article/${article.id}`}>
-									<h1 className="text-lg font-bold">{article.title}</h1>
-								</Link>
-								<p className="whitespace-normal">{article.content}</p>
-							</div>
-						</article>
+						<Link key={i} href={`/article/${article.id}`}>
+							<article className="flex gap-4 group">
+								<img
+									className="h-64"
+									src={article.thumbnail}
+									alt={article.title}
+									loading="lazy"
+								/>
+								<div className="relative h-full flex flex-col">
+									<Image
+										src={scribble}
+										alt=""
+										className="absolute inset-0 h-full w-full transition-transform group-hover:scale-110 group-hover:rotate-3 -z-10 -translate-y-6 pointer-events-none"
+									/>
+									<h1 className="text-lg font-bold mb-2">{article.title}</h1>
+									<p className="whitespace-normal">{article.content}</p>
+									<span className="ml-auto mt-auto text-blue-400">
+										Read more
+									</span>
+								</div>
+							</article>
+						</Link>
 					);
 				})}
 			</div>
-			<Image src={Divider} alt="" className="h-full" />
-			<aside className="bg-red-300">
+			<Image src={Divider} alt="" className="h-full hidden lg:block" />
+			<aside className="bg-red-300 hidden lg:block">
 				<h1>Aside</h1>
 			</aside>
 		</main>

@@ -32,7 +32,9 @@ export default function Page({ params }: { params: { id: string } }) {
 				<time className="text-gray-500 text-3xl mb-2">
 					{new Intl.DateTimeFormat("en-US").format(date)}
 				</time>
-				<h1 className=" text-6xl text-bold max-w-7xl mb-12">{article.title}</h1>
+				<h1 className=" text-6xl text-bold max-w-7xl mb-12 px-12">
+					{article.title}
+				</h1>
 				<img className="h-full" src={article.thumbnail} alt="" loading="lazy" />
 			</section>
 			<article className="max-w-3xl mx-auto text-lg leading-relaxed pb-36">
