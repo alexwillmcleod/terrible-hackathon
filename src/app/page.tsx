@@ -17,7 +17,8 @@ export default async function Page() {
 	const first5 = articles.slice(0, 5);
 
 	return (
-		<main className="">
+		<main className="h-full grid bg-red-500">
+			<header></header>
 			<div>
 				<a>Here is several news</a>
 			</div>
