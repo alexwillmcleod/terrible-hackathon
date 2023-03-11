@@ -74,7 +74,7 @@ async function createArticle(title: string) {
   };
 }
 
-export async function UPDATE(request: Request) {
+export async function PATCH(request: Request) {
   const url = 'https://www.stuff.co.nz/feed/';
   let articleData: {
     title: string;
