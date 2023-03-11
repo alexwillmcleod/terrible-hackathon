@@ -43,8 +43,6 @@ async function createArticle(title: string) {
 		`https://api.imgbb.com/1/upload?Key=${process.env.IMGBB_KEY}&image="${generatedImageUrl}"`
 	);
 
-	console.log(imageData);
-
 	const authorFirstNameTextCompletion = await openai.createCompletion({
 		model: "text-davinci-003",
 		prompt: `Generate an authors first name`,
