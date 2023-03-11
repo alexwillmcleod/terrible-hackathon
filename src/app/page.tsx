@@ -1,5 +1,3 @@
-'use client';
-
 async function getData() {
   const res = await fetch('http://localhost:3000/api/rss');
   if (!res.ok) {
@@ -16,6 +14,7 @@ export default async function Page() {
     content: string;
     thumbnail: string;
   }[];
+  // console.log(articles);
 
   return (
     <main className="min-h-full grid">
@@ -24,19 +23,27 @@ export default async function Page() {
         <a>Things News</a>
       </div>
       <div>
-        {articles.map((article, index) => (
-          <div key={index}>
-            <h1>{article.title}</h1>
-            <img
-              src={article.thumbnail}
-              alt={article.title}
-              width="400rem"
-            ></img>
-            <p>{article.content}</p>
-            <br></br>
-            ----
-          </div>
-        ))}
+        <ul>
+          {articles.map((article, index) => {
+            // console.log(article);
+            // console.log(typeof article.content);
+            return (
+              <li key={index}>
+                <div>
+                  <h1>{article.title}</h1>
+                  <img
+                    src={article.thumbnail}
+                    alt={article.title}
+                    width="400rem"
+                  ></img>
+                  <p>{article.content}</p>
+                  <br></br>
+                  ----
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </main>
   );
