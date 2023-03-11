@@ -6,3 +6,13 @@ ChatGPT generated news article parodies of Stuff New Zealand articles. Uses cron
 
 <img src="public/main-web-screenshot.png" />
 <img src="public/auckland-ufo-sighting.png"/>
+
+## How to run
+
+1. `npm i` to install dependencies
+1. add .env with the keys:
+   - OPENAI_API_KEY
+   - DATABASE_URI
+   - IMGBB_KEY
+1. `npm prisma generate` to generate the prisma client
+1. `npm run dev` to start the server
