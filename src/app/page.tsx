@@ -12,21 +12,26 @@ export default async function Page() {
   const articles = (await getData()) as {
     title: string;
     content: string;
+    thumbnail: string;
   }[];
-  let item = articles[Math.floor(Math.random() * articles.length)];
-  const first5 = articles.slice(0, 5);
 
   return (
-    <main className="min-h-full grid bg-red-500">
+    <main className="min-h-full grid">
       <header></header>
       <div>
-        <a>Here is several news</a>
+        <a>Things News</a>
       </div>
       <div>
-        {first5.map((article) => (
+        {articles.map((article) => (
           <div>
-            <div>title: {article.title}</div>
-            <div>content: {article.content}</div>
+            <h1>{article.title}</h1>
+            <img
+              src={article.thumbnail}
+              width="400rem"
+            ></img>
+            <p>{article.content}</p>
+            <br></br>
+            ----
           </div>
         ))}
       </div>
