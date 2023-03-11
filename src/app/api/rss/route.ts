@@ -74,7 +74,7 @@ async function createArticle(title: string) {
   };
 }
 
-export async function GET(request: Request) {
+export async function UPDATE(request: Request) {
   const url = 'https://www.stuff.co.nz/feed/';
   let articleData: {
     title: string;
@@ -124,4 +124,9 @@ export async function GET(request: Request) {
       });
     });
   return new Response();
+}
+
+export async function GET(request: Request) {
+  const articles = await prisma.article.findMany();
+  return new Response(JSON.stringify(articles));
 }
