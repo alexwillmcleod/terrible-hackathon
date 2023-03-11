@@ -9,6 +9,7 @@ generator client {
 
 model Article {
   id Int @id @default(autoincrement()) 
+  pubDate DateTime @default(now())
   title String 
   content String
   thumbnail String
