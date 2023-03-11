@@ -27,6 +27,7 @@ export default async function Page() {
             <h1>{article.title}</h1>
             <img
               src={article.thumbnail}
+              alt={article.title}
               width="400rem"
             ></img>
             <p>{article.content}</p>

@@ -37,7 +37,7 @@ async function createArticle(title: string) {
     size: '1024x1024',
   });
 
-  const imageUrl = imageGen.data.data[0].url;
+  const imageUrl = imageGen.data.data[0].url!;
 
   const authorFirstNameTextCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -45,7 +45,7 @@ async function createArticle(title: string) {
     temperature: 0.6,
   });
 
-  const authorFirstName = authorFirstNameTextCompletion.data.choices[0].text;
+  const authorFirstName = authorFirstNameTextCompletion.data.choices[0].text!;
 
   const authorLastNameTextCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -53,7 +53,7 @@ async function createArticle(title: string) {
     temperature: 0.6,
   });
 
-  const authorLastName = authorLastNameTextCompletion.data.choices[0].text;
+  const authorLastName = authorLastNameTextCompletion.data.choices[0].text!;
 
   const newArticle = await prisma.article.create({
     data: {
@@ -84,6 +84,7 @@ export async function PATCH(request: Request) {
   await fetch(url)
     .then((response) => response.text())
     .then((data) => {
+      // @ts-ignore
       const $ = cheerio.load(data, {
         xml: true,
       });
@@ -92,6 +93,7 @@ export async function PATCH(request: Request) {
       const titles = newsArticles
         .find('title')
         .map((i, el) => {
+          // @ts-ignore
           const textNode = el.firstChild;
           if (textNode === null) return;
 
@@ -103,6 +105,7 @@ export async function PATCH(request: Request) {
       const descriptions = newsArticles
         .find('description')
         .map((i, el) => {
+          // @ts-ignore
           const textNode = el.firstChild;
           if (textNode === null) return;
 
