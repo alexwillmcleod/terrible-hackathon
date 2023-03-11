@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 	return (
 		<main>
-			<section className="flex flex-col items-center text-center after:h-screen after:w-full after:absolute after:bg-yellow-100 after:top-0 after:left-0 after:-z-10">
+			<section className="flex flex-col items-center text-center mb-12 after:h-screen after:w-full after:absolute after:bg-yellow-100 after:top-0 after:left-0 after:-z-10">
 				<time className="text-gray-500 text-3xl mb-2">
 					{new Intl.DateTimeFormat("en-US").format(date)}
 				</time>
@@ -37,7 +37,7 @@ export default function Page({ params }: { params: { id: string } }) {
 				</h1>
 				<img className="h-full" src={article.thumbnail} alt="" loading="lazy" />
 			</section>
-			<article className="max-w-3xl mx-auto text-lg leading-relaxed pb-36">
+			<article className="max-w-3xl mx-auto text-lg leading-relaxed pb-36 px-8">
 				<p className="whitespace-pre-line">{article.content}</p>
 			</article>
 		</main>
