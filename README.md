@@ -15,4 +15,4 @@ ChatGPT generated news article parodies of Stuff New Zealand articles. Uses cron
    - DATABASE_URI
    - IMGBB_KEY
 1. `npm prisma generate` to generate the prisma client
-1. `npm run dev` to start the server
+1. `npx run dev` to start the server
