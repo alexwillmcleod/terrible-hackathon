@@ -8,6 +8,7 @@ import Divider from "../assets/divider.png";
 import Scribble1 from "../assets/scribble1.png";
 import Scribble2 from "../assets/scribble2.png";
 import Scribble3 from "../assets/scribble3.png";
+import TerribleHack from "../assets/terribleHack.png";
 
 async function getData() {
 	const res = await fetch("/api/rss");
@@ -48,7 +49,7 @@ export default function Page() {
 						<Link key={i} href={`/article/${article.id}`}>
 							<article className="flex gap-4 group">
 								<img
-									className="h-64"
+									className="h-64 clip-cartoon"
 									src={article.thumbnail}
 									alt={article.title}
 									loading="lazy"
@@ -71,8 +72,13 @@ export default function Page() {
 				})}
 			</div>
 			<Image src={Divider} alt="" className="h-full hidden lg:block" />
-			<aside className="bg-red-300 hidden lg:block">
-				<h1>Aside</h1>
+			<aside className=" hidden lg:block">
+				<div className="sticky top-8 mb-auto">
+					<Image src={TerribleHack} alt="" />
+					<h3 className="text-2xl text-bold text-center">
+						Join us at Terrible Hackathon!
+					</h3>
+				</div>
 			</aside>
 		</main>
 	);
