@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="relative h-fit flex justify-center my-8 border-b-2 border-black pb-4 mx-auto max-w-3xl w-full mb-12">
+        <header className="relative h-fit flex justify-center my-8 border-b-2 border-black pb-12 mx-auto max-w-3xl w-full mb-12">
           <Link href="/" aria-label="Home">
             <Image src={Logo} alt="" />
           </Link>
@@ -29,7 +29,26 @@ export default function RootLayout({
             />
           </Link>
         </header>
+        <div className="h-16 w-full"></div>
         {children}
+        <footer className="bg-yellow-100">
+          <div className="flex justify-between gap-8 items-center mx-auto max-w-6xl py-12 px-8">
+            <Link href="/" aria-label="Home">
+              <Image className="w-32 object-contain" src={Logo} alt="" />
+            </Link>
+            <div className="text-center">
+              <h3 className="text-2xl text-bold mb-4">
+                Created in a weekend by
+              </h3>
+              <div className="italic text-md text-gray-600">
+                <p>Matthew Tao</p>
+                <p>Alex McLeod</p>
+                <p>Weizhou Xue</p>
+                <p>Varshini Bhat</p>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
