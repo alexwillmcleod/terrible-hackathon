@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 	return (
 		<main>
-			<section className="flex flex-col items-center text-center mb-12 after:h-screen after:w-full after:absolute after:bg-yellow-100 after:top-0 after:left-0 after:-z-10">
+			<section className="flex bg-paper flex-col items-center text-center mb-12 after:h-screen after:w-full after:absolute after:bg-yellow-100 after:top-0 after:left-0 after:-z-10">
 				<time className="text-gray-500 text-3xl mb-2">
 					{new Intl.DateTimeFormat("en-US").format(date)}
 				</time>
